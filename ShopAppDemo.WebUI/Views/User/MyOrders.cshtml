@@ -1,0 +1,50 @@
+﻿@model List<OrderListModel>
+@{
+    ViewData["Title"] = "MyOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_breadCrumb" />
+@foreach (var order in Model)
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan="2">#</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in order.OrderItems)
+        {
+            <tr>
+                <td>
+                    <img src="~/img/@item.Image" />
+                </td>
+                <td>@item.Name</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">Customer Name:</td>
+            <td>@order.FirstName @order.LastName</td>
+            <td>Total: @order.TotalPrice()</td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td>@order.Phone</td>
+        </tr>
+
+        <tr>
+            <td>Email:</td>
+            <td>@order.Email</td>
+        </tr>
+    </tfoot>
+</table>
+}
+
+

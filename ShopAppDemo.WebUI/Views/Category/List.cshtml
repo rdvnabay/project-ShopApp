@@ -1,0 +1,68 @@
+﻿@model CategoryListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<partial name="_breadCrumb" />
+<div class="row">
+    <div class="col-sm-8 offset-sm-1">
+
+
+        <h3 class="text-muted">Categories</h3>
+        <a asp-controller="Category" asp-action="Add"
+           class="btn btn-sm btn-light btn-outline-light text-success mb-1">
+            Add Category
+            <i class="fas fa-plus"></i>
+        </a>
+
+        @if (Model.Categories.Count() == 0)
+        {
+            <div class="alert alert-warning">
+                Kayıt bulunamadı!
+            </div>
+        }
+        else
+        {
+            <table class="table text-center text-dark">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <tr>
+                            <td>@category.Id</td>
+                            <td>@category.Name</td>
+    
+                            <td>
+                                <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id"
+                                   class="btn btn-sm btn-light text-black-50">
+                                    Edit
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <form asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-sm btn-light text-black-50">
+                                        Delete
+                                        <i class="far fa-minus-square"></i>
+                                    </button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+
+
+
+

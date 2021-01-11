@@ -1,0 +1,87 @@
+﻿@model CategoryModel
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<partial name="_breadCrumb">
+    <h2 class="text-left text-muted mb-2">Edit Category</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <form asp-action="Edit" method="post">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" asp-for="Name"></label>
+                    <input class="form-control col-sm-6" asp-for="Name" />
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-6 ml-auto">
+                        <input type="submit" value="Edit" class="btn btn-sm btn-info" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-8">
+
+            <h3 class="text-muted">Products</h3>
+            <a asp-controller="Product" asp-action="Add"
+               class="btn btn-sm btn-light btn-outline-light text-success mb-1">
+                Add Product
+                <i class="fas fa-plus"></i>
+            </a>
+
+            @if (Model.Products.Count() == 0)
+            {
+                <div class="alert alert-warning">
+                    Kayıt bulunamadı!
+                </div>
+            }
+            else
+            {
+                <table class="table text-center text-dark">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model.Products)
+                        {
+                            <tr>
+                                <td>@product.Id</td>
+                                <td>
+                                    <img src="~/img/@product.Image" alt="@product.Name" width="75" height="75" />
+                                </td>
+                                <td>@product.Name</td>
+                                <td>@product.Price</td>
+                                <td>
+                                    <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id"
+                                       class="btn btn-sm btn-light text-black-50">
+                                        Edit
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    <form asp-controller="CategoryProduct" asp-action="Remove" method="post" class="d-inline">
+                                        <input type="hidden" name="productId" value="@product.Id" />
+                                        <input type="hidden" name="categoryId" value="@Model.Id" />
+                                        <button type="submit" class="btn btn-sm btn-light text-black-50">
+                                            Delete
+                                            <i class="far fa-minus-square"></i>
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+
+
+
+
+

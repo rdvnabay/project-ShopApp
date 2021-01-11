@@ -1,0 +1,56 @@
+﻿@model CategoryListModel
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            @foreach (var category in Model.Categories)
+            {
+                <li class="nav-item">
+                    <a asp-controller="Product" asp-action="Index" asp-route-category="@category.Name"
+                       class="nav-link @(Model.SelectedCategory==category.Name ?"active":"")">
+                        <span data-feather="home"></span>
+                        @category.Name
+                    </a>
+                </li>
+            }
+        </ul>
+
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("admin"))
+            {
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>ADMİN PANEL</span>
+                    <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+                        <span data-feather="plus-circle"></span>
+                    </a>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Product" asp-action="List">
+                            <span data-feather="file-text"></span>
+                            Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Category" asp-action="List">
+                            <span data-feather="file-text"></span>
+                            Categories
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="User" asp-action="Profile">
+                            <span data-feather="file-text"></span>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file-text"></span>
+                            Year-end sale
+                        </a>
+                    </li>
+                </ul>
+            }
+        }
+
+    </div>

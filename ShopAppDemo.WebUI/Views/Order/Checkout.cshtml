@@ -1,0 +1,139 @@
+﻿@model OrderModel
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_breadCrumb">
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <h2>Ödeme Bilgileri</h2>
+            <form asp-controller="Order" asp-action="Checkout" method="post">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="FirstName"></label>
+                            <input asp-for="FirstName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="LastName"></label>
+                            <input asp-for="LastName" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <label asp-for="Address"></label>
+                        <textarea asp-for="Address" class="form-control"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="City"></label>
+                            <input asp-for="City" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="Phone"></label>
+                            <input asp-for="Phone" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio1" name="paymentMethod" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio1">Credit Card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio2" name="paymentMethod" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio2">EFT</label>
+                </div>
+
+                <h2>Payment</h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="CardName"></label>
+                            <input asp-for="CardName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="CardNumber"></label>
+                            <input asp-for="CardNumber" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="ExpirationMonth"></label>
+                            <input asp-for="ExpirationMonth" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="ExpirationYear"></label>
+                            <input asp-for="ExpirationYear" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="Cvv"></label>
+                            <input asp-for="Cvv" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary ml-auto">Order Complete</button>
+            </form>
+        </div>
+        <div class="col-sm-4 offset-1">
+            
+            <ul class="list-group my-5">
+                <h3 class="text-black-50">
+                    Sepetimdeki Ürünler
+                </h3>
+                @foreach (var product in Model.CardModel.CardItems)
+                {
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <h6 class="d-inline">@product.Name</h6>
+                            <small class="text-muted">x @product.Quantity</small>
+                        </div>
+                        <span class="text-muted">
+                            @(product.Price * product.Quantity)
+                            <i class="fas fa-lira-sign"></i>
+                        </span>
+                    </li>
+                }
+
+
+                <li class="list-group-item d-flex justify-content-between bg-dark text-light">
+                    <span>Total (TL)</span>
+                    <span class="font-weight-bold">
+                        @Model.CardModel.TotalPrice()
+                        <i class="fas fa-lira-sign"></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+

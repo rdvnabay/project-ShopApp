@@ -1,0 +1,111 @@
+﻿@model CardModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_breadCrumb">
+    <div class="row">
+        <div class="col-sm-8">
+            <h3 class="text-muted">
+                Sepetteki Ürünler
+            </h3>
+            @if (Model.CardItems.Count == 0)
+            {
+                <div class="alert alert-info text-muted">
+                    Sepetinizde ürün yoktur.
+                </div>
+
+            }
+            else
+            {
+                <table class="table">
+                    <thead class="table-dark text-muted">
+                        <tr>
+                            <th></th>
+                            <th>Ürün Adı</th>
+                            <th>Adeti</th>
+                            <th>Fiyatı</th>
+                            <th>Toplam Fiyatı</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model.CardItems)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/img/@product.Image" alt="@product.Name" width="80" height="80" />
+                                </td>
+                                <td>@product.Name</td>
+                                <td>@product.Quantity</td>
+                                <td>@product.Price</td>
+                                <td>@(product.Price * product.Quantity)</td>
+                                <td>
+                                    <form asp-controller="Card" asp-action="RemoveFromCard">
+                                        <input type="hidden" name="productId" value="@product.ProductId" />
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            }
+
+        </div>
+        @if (Model.CardItems.Count > 0)
+        {
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            Card Summary
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        Total Price
+                                    </th>
+                                    <td>
+                                        @Model.TotalPrice() TL
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Shipping</th>
+                                    <td>Free</td>
+                                </tr>
+                                <tr>
+                                    <th>Order Total</th>
+                                    <td>@Model.TotalPrice() TL</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="card-link mr-auto">
+                            <a asp-controller="Home" asp-action="Index"
+                               class="btn btn-sm btn-dark">
+                                <i class="fas fa-arrow-left"></i>
+                                Alışverişe Devam Et
+                            </a>
+
+                            <a asp-controller="Order" asp-action="Checkout"
+                               class="btn btn-sm btn-dark">
+                                Siparişi Tamamla
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+

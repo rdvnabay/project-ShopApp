@@ -1,0 +1,48 @@
+﻿@model ProductListViewModel
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <partial name="_breadCrumb">
+        <div class="row my-2">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-sm-3">
+                    <div class="card mb-3 bg-light">
+                        <div class="row no-gutters">
+                            <div class="col-md-5 py-3">
+                                <img src="~/img/@product.Image" class="card-img" alt="@product.Name" style="height:150px">
+                            </div>
+                            <div class="col-md-7 ">
+                                <div class="card-body">
+                                    <h6 class="card-title text-center">@product.Name</h6>
+                                    <p class="card-text text-center">@product.Price <i class="fas fa-lira-sign"></i></p>
+
+                                    <div class="card-footer p-0 m-0">
+                                        <small>
+                                            <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"
+                                               class="btn btn-sm btn-outline-light text-black-50">
+                                                <i class="fas fa-caret-right"></i>
+                                                Ürün Detayı
+                                            </a>
+                                        </small>
+                                        <small>
+                                            <a asp-controller="Card" asp-action="Add" asp-route-id="@product.Id"
+                                               class="btn btn-sm btn-light text-black-50">
+                                                <i class="fas fa-cart-plus"></i>
+                                                Sepete Ekle
+                                            </a>
+                                        </small>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <div page-model="@Model.PagingInfo"></div>
+

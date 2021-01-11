@@ -1,0 +1,49 @@
+﻿@model ProductDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_breadCrumb">
+<div class="row">
+    <div class="col-md-3">
+        <img src="~/img/@Model.Product.Image" class="img-fluid"/>
+    </div>
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header">
+                @Model.Product.Name
+            </div>
+            <div class="card-body">
+                <h3 class="card-text">
+                    @foreach (var category in Model.Categories)
+                    {
+            
+                        @category.Name
+                   
+                   
+                    }
+                </h3>
+                <p class="card-text">@Model.Product.Price TL</p>
+                <div class="col-sm-4">
+                    <form asp-controller="Card" asp-action="AddToCard" method="post">
+                        <input type="hidden" name="productId" value="@Model.Product.Id" />
+                        <div class="input-group mb-3">
+                            <input type="number" name="quantity" class="form-control" value="1" step="1" />
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-cart-plus"></i>Add To Card
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <p class="card-text">@Html.Raw(Model.Product.Description)</p>
+
+               
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "ConfirmEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-black-50">E-posta onayı</h2>
+@if (TempData["message"] != null)
+{
+<div class="alert alert-success col-sm-6">
+    <span class="text-muted">   
+    @TempData["message"] 
+    Giriş yapmak için <a asp-controller="Account" asp-action="Login" class="font-weight-bold">tıklayın</a>
+    </span>
+
+</div>
+}
+
+

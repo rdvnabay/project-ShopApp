@@ -1,0 +1,71 @@
+﻿@model ProductListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<partial name="_breadCrumb" />
+<div class="row">
+    <div class="col-sm-8 offset-sm-1">
+
+
+        <h3 class="text-muted">Products</h3>
+        <a asp-controller="Admin" asp-action="AddProduct"
+           class="btn btn-sm btn-light btn-outline-light text-success mb-1">
+            Add Product
+            <i class="fas fa-plus"></i>
+        </a>
+
+        @if (Model.Products.Count() == 0)
+        {
+            <div class="alert alert-warning">
+                Kayıt bulunamadı!
+            </div>
+        }
+        else
+        {
+            <table class="table text-center text-dark">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.Products)
+                    {
+                        <tr>
+                            <td>@product.Id</td>
+                            <td>
+                                <img src="~/img/@product.Image" alt="@product.Name" width="75" height="75" />
+                            </td>
+                            <td>@product.Name</td>
+                            <td>@product.Price</td>
+                            <td>
+                                <a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@product.Id"
+                                   class="btn btn-sm btn-light text-black-50">
+                                    Edit
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <form asp-controller="Admin" asp-action="DeleteProduct" asp-route-id="@product.Id" method="post" class="d-inline">
+                                    <button  type="submit" class="btn btn-sm btn-light text-black-50">
+                                        Delete
+                                        <i class="far fa-minus-square"></i>
+                                    </button>
+                                </form>
+                               
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+
+
