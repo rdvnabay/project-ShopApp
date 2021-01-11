@@ -14,15 +14,17 @@ using ShopAppDemo.WebUI.Models.Account;
 namespace ShopAppDemo.WebUI.Controllers
 {
     //Tüm post action metodlarında devreye girer.
-
     [AutoValidateAntiforgeryToken]
     public class AccountController : Controller
     {
+        #region  Fields
         private UserManager<AppUser> _userManager;
         private SignInManager<AppUser> _signInManager;
         private IEmailSender _emailSender;
         private ICardService _cardService;
+        #endregion
 
+        #region Constructor
         public AccountController(UserManager<AppUser> userManager,
                                  SignInManager<AppUser> signInManager,
                                  IEmailSender emailSender,
@@ -33,10 +35,18 @@ namespace ShopAppDemo.WebUI.Controllers
             _emailSender = emailSender;
             _cardService = cardService;
         }
+        #endregion
+
+      
+        //Actions
+
+        #region Index
         public IActionResult Index()
         {
             return View();
         }
+        #endregion
+
         #region Register
         [HttpGet]
         public IActionResult Register()
@@ -230,9 +240,11 @@ namespace ShopAppDemo.WebUI.Controllers
         }
         #endregion
 
+        #region AccessDenied
         public IActionResult AccessDenied()
         {
             return View();
         }
+        #endregion
     }
 }

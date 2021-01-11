@@ -16,13 +16,22 @@ namespace ShopAppDemo.WebUI.Controllers
     [Authorize]
     public class ProductController : Controller
     {
+        #region Fields
         private IProductService _productService;
         private ICategoryService _categoryService;
+        #endregion
+
+        #region Constructor
         public ProductController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
             _categoryService = categoryService;
         }
+        #endregion
+
+        
+        //Actions
+        #region Index
         public IActionResult Index(string category, int page = 1)
         {
             const int pageSize = 3;
@@ -38,7 +47,9 @@ namespace ShopAppDemo.WebUI.Controllers
                 }
             });
         }
+        #endregion
 
+        #region Details
         public IActionResult Details(int? id)
         {
 
@@ -57,6 +68,7 @@ namespace ShopAppDemo.WebUI.Controllers
                 Categories = product.ProductCategories.Select(x => x.Category).ToList()
             });
         }
+        #endregion
 
         #region List
         [Authorize(Roles = "admin")]

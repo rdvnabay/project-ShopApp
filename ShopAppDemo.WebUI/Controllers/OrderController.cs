@@ -19,15 +19,26 @@ namespace ShopAppDemo.WebUI.Controllers
     [Authorize]
     public class OrderController : Controller
     {
+        #region Fields
         private UserManager<AppUser> _userManager;
         private ICardService _cardService;
         private IOrderService _orderService;
-        public OrderController(UserManager<AppUser> userManager, ICardService cardService, IOrderService orderService)
+        #endregion
+
+        #region Constructor
+        public OrderController(
+            UserManager<AppUser> userManager, 
+            ICardService cardService, 
+            IOrderService orderService)
         {
             _userManager = userManager;
             _cardService = cardService;
             _orderService = orderService;
         }
+        #endregion
+
+
+        //Actions
         #region Action=> Checkout
         public IActionResult Checkout()
         {
