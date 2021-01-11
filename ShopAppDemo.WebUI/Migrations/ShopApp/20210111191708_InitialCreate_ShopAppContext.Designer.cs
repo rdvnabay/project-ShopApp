@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore;
 
-namespace ShopAppDemo.WebUI.Migrations
+namespace ShopAppDemo.WebUI.Migrations.ShopApp
 {
     [DbContext(typeof(ShopAppContext))]
-    partial class ShopAppContextModelSnapshot : ModelSnapshot
+    [Migration("20210111191708_InitialCreate_ShopAppContext")]
+    partial class InitialCreate_ShopAppContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,7 +110,7 @@ namespace ShopAppDemo.WebUI.Migrations
                     b.Property<string>("OrderNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderSate")
+                    b.Property<int>("OrderState")
                         .HasColumnType("int");
 
                     b.Property<string>("PaymentId")

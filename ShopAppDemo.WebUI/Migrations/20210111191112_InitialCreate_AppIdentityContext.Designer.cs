@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopAppDemo.WebUI.Identity;
 
-namespace ShopAppDemo.WebUI.Migrations.AppIdentityDb
+namespace ShopAppDemo.WebUI.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20191231061537_InitialAppIdentityContext")]
-    partial class InitialAppIdentityContext
+    [Migration("20210111191112_InitialCreate_AppIdentityContext")]
+    partial class InitialCreate_AppIdentityContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

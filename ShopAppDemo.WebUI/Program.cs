@@ -22,7 +22,6 @@ namespace ShopAppDemo.WebUI
                 {
                     
                     webBuilder.UseStartup<Startup>()
-                    //
                     .UseDefaultServiceProvider(options=>options.ValidateScopes=false);
                 });
     }

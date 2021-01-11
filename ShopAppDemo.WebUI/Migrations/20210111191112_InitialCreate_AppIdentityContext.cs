@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ShopAppDemo.WebUI.Migrations.AppIdentityDb
+namespace ShopAppDemo.WebUI.Migrations
 {
-    public partial class InitialAppIdentityContext : Migration
+    public partial class InitialCreate_AppIdentityContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

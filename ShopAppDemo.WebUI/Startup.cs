@@ -167,8 +167,8 @@ namespace ShopAppDemo.WebUI
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                     );
             });
-            SeedData.EnsurePopulated(app);
-            AppUserRole.DefaultUserRole(userManager, roleManager, Configuration).Wait();
+           //SeedData.EnsurePopulated(app);
+           AppUserRole.DefaultUserRole(userManager, roleManager, Configuration).Wait();
         }
     }
 }
