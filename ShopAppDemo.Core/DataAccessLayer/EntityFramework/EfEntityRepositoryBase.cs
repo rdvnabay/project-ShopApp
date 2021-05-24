@@ -44,8 +44,8 @@ namespace ShopAppDemo.Core.DataAccessLayer.EntityFramework
             using (var context = new TContext())
             {
                 return expression == null
-                    ? context.Set<TEntity>().Where(expression).ToList()
-                    : context.Set<TEntity>().ToList();
+                 ? context.Set<TEntity>().ToList()
+                 : context.Set<TEntity>().Where(expression).ToList();      
             }
         }
 

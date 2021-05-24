@@ -33,7 +33,7 @@ namespace ShopAppDemo.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
+            //services.AddScoped<DbContext, ShopAppContext>();
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ICardService, CardManager>();
