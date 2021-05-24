@@ -1,4 +1,5 @@
-﻿using ShopAppDemo.BusinessLayer.Abstract;
+﻿using Core.Utilities.Results;
+using ShopAppDemo.BusinessLayer.Abstract;
 using ShopAppDemo.DataAccessLayer.Abstract;
 using ShopAppDemo.Entities.Concrete;
 using System;
@@ -15,46 +16,15 @@ namespace ShopAppDemo.BusinessLayer.Concrete
             _orderDal = orderDal;
         }
 
-        public bool Create(Order entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateOrder(Order entity)
+        public IResult CreateOrder(Order entity)
         {
             _orderDal.Add(entity);
+            return new SuccessResult();
         }
 
-        public void Delete(Order entity)
+        public IDataResult<IEnumerable<Order>> GetAllFilter(Expression<Func<Order, bool>> filter = null)
         {
             throw new NotImplementedException();
-        }
-
-        public IEnumerable<Order> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Order> GetAllFilter(Expression<Func<Order, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Order GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Order GetOneFilter(Expression<Func<Order, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Order entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        
+        } 
     }
 }
