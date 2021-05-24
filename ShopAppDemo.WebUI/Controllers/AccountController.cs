@@ -31,11 +31,6 @@ namespace ShopAppDemo.WebUI.Controllers
 
 
         //Actions
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public IActionResult Register()
         {

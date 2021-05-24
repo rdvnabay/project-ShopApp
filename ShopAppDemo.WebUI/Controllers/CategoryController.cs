@@ -18,10 +18,6 @@ namespace ShopAppDemo.WebUI.Controllers
         }
 
         //Actions
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [Authorize(Roles = "admin")]
         public IActionResult List()

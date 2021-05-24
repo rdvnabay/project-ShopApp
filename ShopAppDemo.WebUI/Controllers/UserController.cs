@@ -17,10 +17,6 @@ namespace ShopAppDemo.WebUI.Controllers
             _orderService = orderService;
             _userManager = userManager;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public IActionResult MyOrders()
         {
@@ -52,7 +48,6 @@ namespace ShopAppDemo.WebUI.Controllers
                 }).ToList();
 
                 orderListModel.Add(orderModel);
-
             }
 
             return View(orderListModel);
