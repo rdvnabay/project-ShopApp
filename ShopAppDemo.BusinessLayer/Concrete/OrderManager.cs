@@ -4,7 +4,6 @@ using ShopAppDemo.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace ShopAppDemo.BusinessLayer.Concrete
 {
@@ -23,7 +22,7 @@ namespace ShopAppDemo.BusinessLayer.Concrete
 
         public void CreateOrder(Order entity)
         {
-            _orderDal.Create(entity);
+            _orderDal.Add(entity);
         }
 
         public void Delete(Order entity)

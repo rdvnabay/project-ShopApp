@@ -1,11 +1,8 @@
 ﻿using ShopAppDemo.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ShopAppDemo.BusinessLayer.Abstract
 {
-    public interface IOrderService:IRepositoryService<Order>
+    public interface IOrderService
     {
         void CreateOrder(Order entity);
     }
