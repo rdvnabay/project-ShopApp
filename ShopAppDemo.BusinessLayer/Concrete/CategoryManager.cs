@@ -18,7 +18,7 @@ namespace ShopAppDemo.BusinessLayer.Concrete
 
         public bool Create(Category entity)
         {
-            _categoryDal.Create(entity);
+            _categoryDal.Add(entity);
             return true;
         }
 
@@ -34,12 +34,12 @@ namespace ShopAppDemo.BusinessLayer.Concrete
 
         public IEnumerable<Category> GetAllFilter(Expression<Func<Category, bool>> filter = null)
         {
-            return _categoryDal.GetAllFilter(filter);
+            return _categoryDal.GetAll(filter);
         }
 
         public Category GetById(int id)
         {
-            return _categoryDal.GetById(id);
+            return _categoryDal.Get(x =>x.Id==id);
         }
 
         public Category GetByIdWithProducts(int id)
@@ -49,7 +49,7 @@ namespace ShopAppDemo.BusinessLayer.Concrete
 
         public Category GetOneFilter(Expression<Func<Category, bool>> filter = null)
         {
-            return _categoryDal.GetOneFilter(filter);
+            return _categoryDal.Get(filter);
         }
 
         public void RemoveFromCategoryProduct(int productId, int categoryId)
