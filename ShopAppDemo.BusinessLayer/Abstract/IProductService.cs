@@ -14,5 +14,7 @@ namespace ShopAppDemo.BusinessLayer.Abstract
         int GetProductsByCategoryCount(string category);
         Product GetByIdWithCategories(int id);
         void Update(Product entity, int[] categoriesID);
+        Product GetById(int id);
+        void Delete(Product entity);
     }
 }

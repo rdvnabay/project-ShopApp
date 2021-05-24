@@ -31,7 +31,7 @@ namespace ShopAppDemo.BusinessLayer.Concrete
             _productDal.Delete(entity);
         }
 
-        public IEnumerable<Product> GetAll()
+        public List<Product> GetAll()
         {
             return _productDal.GetAll();
         }
@@ -43,7 +43,7 @@ namespace ShopAppDemo.BusinessLayer.Concrete
 
         public Product GetById(int id)
         {
-            return _productDal.Get(x =>x.Id==id);
+            return _productDal.Get(x => x.Id == id);
         }
 
         public Product GetByIdWithCategories(int id)
@@ -63,7 +63,7 @@ namespace ShopAppDemo.BusinessLayer.Concrete
 
         public List<Product> GetProductsByCategory(string category, int page, int pageSize)
         {
-            return _productDal.GetProductsByCategory(category,page,pageSize);
+            return _productDal.GetProductsByCategory(category, page, pageSize);
         }
 
         public int GetProductsByCategoryCount(string category)
@@ -96,11 +96,6 @@ namespace ShopAppDemo.BusinessLayer.Concrete
         public void Add(Product product)
         {
             throw new NotImplementedException();
-        }
-
-        List<Product> IProductService.GetAll()
-        {
-           return  _productDal.GetAll();
         }
     }
 }
