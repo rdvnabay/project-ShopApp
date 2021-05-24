@@ -1,12 +1,12 @@
-﻿@model IEnumerable<Product>
+﻿@model List<Product>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
-            <partial name="_slider">
-          @await  Component.InvokeAsync("ProductList")
+            @*<partial name="_slider">
+          @await  Component.InvokeAsync("ProductList")*@
 </div>
 
 

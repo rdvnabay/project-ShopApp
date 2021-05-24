@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ShopAppDemo.BusinessLayer.Abstract;
 using ShopAppDemo.WebUI.Identity;
 using ShopAppDemo.WebUI.Models.Order;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ShopAppDemo.WebUI.Controllers
 {
@@ -24,7 +22,6 @@ namespace ShopAppDemo.WebUI.Controllers
             return View();
         }
 
-        #region Action=> MyOrders
         public IActionResult MyOrders()
         {
             var orders = _orderService.GetAllFilter(x => x.UserId == _userManager.GetUserId(User));
@@ -60,7 +57,5 @@ namespace ShopAppDemo.WebUI.Controllers
 
             return View(orderListModel);
         }
-        #endregion
     }
-
 }

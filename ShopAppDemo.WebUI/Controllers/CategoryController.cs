@@ -1,38 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShopAppDemo.BusinessLayer.Abstract;
 using ShopAppDemo.Entities;
 using ShopAppDemo.WebUI.Models;
+using System.Linq;
 
 namespace ShopAppDemo.WebUI.Controllers
 {
     public class CategoryController : Controller
     {
 
-        #region Fields
         private ICategoryService _categoryService;
-        #endregion
 
-        #region Constructor
         public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
-        #endregion
 
         //Actions
-        #region Index
         public IActionResult Index()
         {
             return View();
         }
-        #endregion
 
-        #region List
         [Authorize(Roles = "admin")]
         public IActionResult List()
         {
@@ -40,9 +30,7 @@ namespace ShopAppDemo.WebUI.Controllers
             Categories= _categoryService.GetAll().ToList()
             });
         }
-        #endregion
 
-        #region Add
         [Authorize(Roles = "admin")]
         public IActionResult Add()
         {
@@ -68,9 +56,7 @@ namespace ShopAppDemo.WebUI.Controllers
             }
             return View();
         }
-        #endregion
 
-        #region Edit
         [Authorize(Roles = "admin")]
         public IActionResult Edit(int? id)
         {
@@ -105,9 +91,7 @@ namespace ShopAppDemo.WebUI.Controllers
             }
             return View(model);
         }
-        #endregion
 
-        #region Delete
         [HttpPost]
         [Authorize(Roles = "admin")]
         public IActionResult Delete(int? id)
@@ -120,6 +104,5 @@ namespace ShopAppDemo.WebUI.Controllers
             _categoryService.Delete(entity);
             return RedirectToAction("List");
         }
-        #endregion
     }
 }

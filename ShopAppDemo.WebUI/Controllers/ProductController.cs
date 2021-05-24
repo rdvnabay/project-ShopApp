@@ -1,37 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShopAppDemo.BusinessLayer.Abstract;
 using ShopAppDemo.Entities;
 using ShopAppDemo.WebUI.Models;
 using ShopAppDemo.WebUI.ViewModels;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ShopAppDemo.WebUI.Controllers
 {
     [Authorize]
     public class ProductController : Controller
     {
-        #region Fields
         private IProductService _productService;
         private ICategoryService _categoryService;
-        #endregion
 
-        #region Constructor
         public ProductController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
             _categoryService = categoryService;
         }
-        #endregion
-
-        
+    
         //Actions
-        #region Index
         public IActionResult Index(string category, int page = 1)
         {
             const int pageSize = 3;
@@ -47,9 +39,7 @@ namespace ShopAppDemo.WebUI.Controllers
                 }
             });
         }
-        #endregion
 
-        #region Details
         public IActionResult Details(int? id)
         {
 
@@ -68,9 +58,7 @@ namespace ShopAppDemo.WebUI.Controllers
                 Categories = product.ProductCategories.Select(x => x.Category).ToList()
             });
         }
-        #endregion
 
-        #region List
         [Authorize(Roles = "admin")]
         public IActionResult List()
         {
@@ -79,9 +67,7 @@ namespace ShopAppDemo.WebUI.Controllers
                 Products = _productService.GetAll().ToList()
             });
         }
-        #endregion
 
-        #region Add
         [Authorize(Roles ="admin")]
         public IActionResult Add()
         {
@@ -122,9 +108,7 @@ namespace ShopAppDemo.WebUI.Controllers
             ViewBag.ErrorMessages = _productService.ErrorMessage;
             return View(model);
         }
-        #endregion
 
-        #region Edit
         [Authorize(Roles = "admin")]
         public IActionResult Edit(int? id)
         {
@@ -178,7 +162,6 @@ namespace ShopAppDemo.WebUI.Controllers
         //    }
         //    return View(model);
         //}
-        #endregion
 
         #region Delete
         //[HttpPost]

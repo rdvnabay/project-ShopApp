@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using IyzipayCore;
+﻿using IyzipayCore;
 using IyzipayCore.Model;
 using IyzipayCore.Request;
 using Microsoft.AspNetCore.Authorization;
@@ -13,19 +9,19 @@ using ShopAppDemo.Entities;
 using ShopAppDemo.WebUI.Identity;
 using ShopAppDemo.WebUI.Models;
 using ShopAppDemo.WebUI.Models.Order;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ShopAppDemo.WebUI.Controllers
 {
     [Authorize]
     public class OrderController : Controller
     {
-        #region Fields
         private UserManager<AppUser> _userManager;
         private ICardService _cardService;
         private IOrderService _orderService;
-        #endregion
 
-        #region Constructor
         public OrderController(
             UserManager<AppUser> userManager, 
             ICardService cardService, 
@@ -35,11 +31,8 @@ namespace ShopAppDemo.WebUI.Controllers
             _cardService = cardService;
             _orderService = orderService;
         }
-        #endregion
-
 
         //Actions
-        #region Action=> Checkout
         public IActionResult Checkout()
         {
             var cart = _cardService.GetCardByUserId(_userManager.GetUserId(User));
@@ -97,9 +90,7 @@ namespace ShopAppDemo.WebUI.Controllers
 
             return View(model);
         }
-        #endregion
 
-        #region Method=> SaveOrder
         private void SaveOrder(OrderModel model, Payment payment, string userId)
         {
             var order = new Order();
@@ -129,16 +120,12 @@ namespace ShopAppDemo.WebUI.Controllers
             }
             _orderService.CreateOrder(order);
         }
-        #endregion
 
-        #region Method=> ClearCard
         private void ClearCard(string cartId)
         {
             //_cardService.ClearCard(cartId);
         }
-        #endregion
 
-        #region Method=> PaymentProcess
         private Payment PaymentProcess(OrderModel model)
         {
 
@@ -232,9 +219,5 @@ namespace ShopAppDemo.WebUI.Controllers
             return Payment.Create(request, options);
 
         }
-        #endregion
-
-
-
     }
 }

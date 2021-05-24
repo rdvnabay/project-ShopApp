@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ShopAppDemo.BusinessLayer.Abstract;
 using ShopAppDemo.WebUI.EmailServices;
 using ShopAppDemo.WebUI.Identity;
 using ShopAppDemo.WebUI.Models;
 using ShopAppDemo.WebUI.Models.Account;
+using System.Threading.Tasks;
 
 namespace ShopAppDemo.WebUI.Controllers
 {
@@ -17,14 +13,11 @@ namespace ShopAppDemo.WebUI.Controllers
     [AutoValidateAntiforgeryToken]
     public class AccountController : Controller
     {
-        #region  Fields
         private UserManager<AppUser> _userManager;
         private SignInManager<AppUser> _signInManager;
         private IEmailSender _emailSender;
         private ICardService _cardService;
-        #endregion
 
-        #region Constructor
         public AccountController(UserManager<AppUser> userManager,
                                  SignInManager<AppUser> signInManager,
                                  IEmailSender emailSender,
@@ -35,19 +28,14 @@ namespace ShopAppDemo.WebUI.Controllers
             _emailSender = emailSender;
             _cardService = cardService;
         }
-        #endregion
 
-      
+
         //Actions
-
-        #region Index
         public IActionResult Index()
         {
             return View();
         }
-        #endregion
 
-        #region Register
         [HttpGet]
         public IActionResult Register()
         {
@@ -86,9 +74,7 @@ namespace ShopAppDemo.WebUI.Controllers
             ModelState.AddModelError("", "Bir hata oluştu!");
             return View(model);
         }
-        #endregion
 
-        #region ConfirmEmail
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
             if (userId == null || token == null)
@@ -112,9 +98,7 @@ namespace ShopAppDemo.WebUI.Controllers
             TempData["message"] = "Hesabınız onaylanmadı!";
             return View();
         }
-        #endregion
 
-        #region Login
         [HttpGet]
         [Route("account/[action]")]
         public IActionResult Login()
@@ -158,17 +142,13 @@ namespace ShopAppDemo.WebUI.Controllers
             ModelState.AddModelError("", "Email veya şifre hatalı!");
             return View(model);
         }
-        #endregion
 
-        #region Logout
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-        #endregion
 
-        #region ForgotPassword
         public IActionResult ForgotPassword()
         {
             return View();
@@ -203,9 +183,7 @@ namespace ShopAppDemo.WebUI.Controllers
 
 
         }
-        #endregion
 
-        #region ResetPassword
         public IActionResult ResetPassword(string token)
         {
             if (string.IsNullOrEmpty(token))
@@ -238,13 +216,10 @@ namespace ShopAppDemo.WebUI.Controllers
             }
             return View(model);
         }
-        #endregion
 
-        #region AccessDenied
         public IActionResult AccessDenied()
         {
             return View();
         }
-        #endregion
     }
 }
