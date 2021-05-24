@@ -5,8 +5,10 @@ using System.Text;
 
 namespace ShopAppDemo.BusinessLayer.Abstract
 {
-   public interface IProductService:IRepositoryService<Product>,IValidator<Product>
+   public interface IProductService:IValidator<Product>
     {
+        void Add(Product product);
+        List<Product> GetAll();
         Product GetProductDetails(int id);
         List<Product> GetProductsByCategory(string category, int page,int pageSize);
         int GetProductsByCategoryCount(string category);

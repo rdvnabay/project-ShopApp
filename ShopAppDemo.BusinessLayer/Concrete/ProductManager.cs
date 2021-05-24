@@ -20,7 +20,7 @@ namespace ShopAppDemo.BusinessLayer.Concrete
         {
             if (Validate(entity))
             {
-                _productDal.Create(entity);
+                _productDal.Add(entity);
                 return true;
             }
             return false;
@@ -38,12 +38,12 @@ namespace ShopAppDemo.BusinessLayer.Concrete
 
         public IEnumerable<Product> GetAllFilter(Expression<Func<Product, bool>> filter = null)
         {
-            return _productDal.GetAllFilter(filter);
+            return _productDal.GetAll(filter);
         }
 
         public Product GetById(int id)
         {
-            return _productDal.GetById(id);
+            return _productDal.Get(x =>x.Id==id);
         }
 
         public Product GetByIdWithCategories(int id)
@@ -53,7 +53,7 @@ namespace ShopAppDemo.BusinessLayer.Concrete
 
         public Product GetOneFilter(Expression<Func<Product, bool>> filter = null)
         {
-            return _productDal.GetOneFilter(filter);
+            return _productDal.Get(filter);
         }
 
         public Product GetProductDetails(int id)
@@ -91,6 +91,16 @@ namespace ShopAppDemo.BusinessLayer.Concrete
                 isValid = false;
             }
             return isValid;
+        }
+
+        public void Add(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Product> IProductService.GetAll()
+        {
+           return  _productDal.GetAll();
         }
     }
 }

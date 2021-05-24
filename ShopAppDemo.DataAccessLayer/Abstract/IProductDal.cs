@@ -1,9 +1,10 @@
-﻿using ShopAppDemo.Entities;
+﻿using ShopAppDemo.Core.DataAccessLayer;
+using ShopAppDemo.Entities;
 using System.Collections.Generic;
 
 namespace ShopAppDemo.DataAccessLayer.Abstract
 {
-    public interface IProductDal:IRepository<Product>
+    public interface IProductDal:IEntityRepository<Product>
     {
         Product GetProductDetails(int id);
         List<Product> GetProductsByCategory(string category, int page, int pageSize);

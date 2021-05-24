@@ -42,10 +42,10 @@ namespace ShopAppDemo.WebUI
             services.AddScoped<IProductDal, EFCoreProductDal>();
             services.AddScoped<ICategoryDal, EFCoreCategoryDal>();
             services.AddScoped<ICardDal, EFCoreCardDal>();
-            services.AddScoped<IOrderDal,EFCoreOrderDal>();
-         
-  
-         
+            services.AddScoped<IOrderDal, EFCoreOrderDal>();
+
+
+
             services.AddDbContext<AppIdentityDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ShopAppDemo.WebUI")));
 
@@ -86,16 +86,16 @@ namespace ShopAppDemo.WebUI
                 {
                     HttpOnly = true,
                     Name = ".ShopApp.Security.Cookie",
-                    SameSite=SameSiteMode.Strict
-                    
+                    SameSite = SameSiteMode.Strict
+
                 };
             });
-            
+
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager )
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -104,7 +104,7 @@ namespace ShopAppDemo.WebUI
             }
             app.UseStaticFiles();
             //app.CustomStaticFiles();
-          
+
             app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();
@@ -168,8 +168,8 @@ namespace ShopAppDemo.WebUI
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                     );
             });
-           //SeedData.EnsurePopulated(app);
-           AppUserRole.DefaultUserRole(userManager, roleManager, Configuration).Wait();
+            //SeedData.EnsurePopulated(app);
+            AppUserRole.DefaultUserRole(userManager, roleManager, Configuration).Wait();
         }
     }
 }

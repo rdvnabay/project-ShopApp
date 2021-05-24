@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ShopAppDemo.Core\ShopAppDemo.Core.csproj" />
     <ProjectReference Include="..\ShopAppDemo.Entities\ShopAppDemo.Entities.csproj" />
   </ItemGroup>
 

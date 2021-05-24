@@ -112,10 +112,10 @@ namespace ShopAppDemo.WebUI.Controllers
                             Image = file.FileName
                         };
 
-                        if (_productService.Create(entity))
-                        {
-                            return RedirectToAction("Index", "Home");
-                        }
+                        //if (_productService.Create(entity))
+                        //{
+                        //    return RedirectToAction("Index", "Home");
+                        //}
                     }
                 }
             }
@@ -149,49 +149,49 @@ namespace ShopAppDemo.WebUI.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [Authorize(Roles = "admin")]
-        public async Task<IActionResult> Edit(ProductModel model, int[] categoriesID, IFormFile file)
-        {
-            var entity = _productService.GetById(model.Id);
-            if (ModelState.IsValid)
-            {
-                if (file != null)
-                {
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", file.FileName);
-                    using (var stream = new FileStream(path, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
+        //[HttpPost]
+        //[Authorize(Roles = "admin")]
+        //public async Task<IActionResult> Edit(ProductModel model, int[] categoriesID, IFormFile file)
+        //{
+        //    var entity = _productService.GetById(model.Id);
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (file != null)
+        //        {
+        //            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", file.FileName);
+        //            using (var stream = new FileStream(path, FileMode.Create))
+        //            {
+        //                await file.CopyToAsync(stream);
+        //            }
 
-                    if (entity != null)
-                    {
-                        entity.Name = model.Name;
-                        entity.Image = file.FileName;
-                        entity.Price = model.Price;
-                        entity.Description = model.Description;
+        //            if (entity != null)
+        //            {
+        //                entity.Name = model.Name;
+        //                entity.Image = file.FileName;
+        //                entity.Price = model.Price;
+        //                entity.Description = model.Description;
 
-                        _productService.Update(entity, categoriesID);
-                        return RedirectToAction("List");
-                    }
-                }
-            }
-            return View(model);
-        }
+        //                _productService.Update(entity, categoriesID);
+        //                return RedirectToAction("List");
+        //            }
+        //        }
+        //    }
+        //    return View(model);
+        //}
         #endregion
 
         #region Delete
-        [HttpPost]
-        [Authorize(Roles = "admin")]
-        public IActionResult Delete(int id)
-        {
-            var entity = _productService.GetById(id);
-            if (entity != null)
-            {
-                _productService.Delete(entity);
-            }
-            return RedirectToAction("List");
-        }
+        //[HttpPost]
+        //[Authorize(Roles = "admin")]
+        //public IActionResult Delete(int id)
+        //{
+        //    var entity = _productService.GetById(id);
+        //    if (entity != null)
+        //    {
+        //        _productService.Delete(entity);
+        //    }
+        //    return RedirectToAction("List");
+        //}
         #endregion
     }
 }
