@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShopAppDemo.Core\ShopAppDemo.Core.csproj" />
-    <ProjectReference Include="..\ShopAppDemo.Entities\ShopAppDemo.Entities.csproj" />
+    <ProjectReference Include="..\ShopAppDemo.Core\Core.csproj" />
+    <ProjectReference Include="..\ShopAppDemo.Entities\Entities.csproj" />
   </ItemGroup>
 
 </Project>

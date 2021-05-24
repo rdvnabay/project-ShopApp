@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShopAppDemo.BusinessLayer\ShopAppDemo.BusinessLayer.csproj" />
-    <ProjectReference Include="..\ShopAppDemo.Core\ShopAppDemo.Core.csproj" />
-    <ProjectReference Include="..\ShopAppDemo.DataAccessLayer\ShopAppDemo.DataAccessLayer.csproj" />
-    <ProjectReference Include="..\ShopAppDemo.Entities\ShopAppDemo.Entities.csproj" />
+    <ProjectReference Include="..\ShopAppDemo.BusinessLayer\Business.csproj" />
+    <ProjectReference Include="..\ShopAppDemo.Core\Core.csproj" />
+    <ProjectReference Include="..\ShopAppDemo.DataAccessLayer\DataAccess.csproj" />
+    <ProjectReference Include="..\ShopAppDemo.Entities\Entities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
