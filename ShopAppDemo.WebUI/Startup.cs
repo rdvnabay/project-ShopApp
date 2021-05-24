@@ -45,8 +45,9 @@ namespace ShopAppDemo.WebUI
             services.AddScoped<IOrderDal,EFCoreOrderDal>();
          
   
-            services.AddDbContext<ShopAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ShopAppDemo.WebUI")));
-            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ShopAppDemo.WebUI")));
+         
+            services.AddDbContext<AppIdentityDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ShopAppDemo.WebUI")));
 
 
             services.AddTransient<IEmailSender, EmailSender>();

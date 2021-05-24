@@ -1,19 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using ShopAppDemo.Entities;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore
 {
     public class ShopAppContext:DbContext
     {
-        public ShopAppContext(DbContextOptions<ShopAppContext> options)
-            : base(options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ShopAppDB;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
 
         public DbSet<Product> Products { get; set; }
@@ -26,7 +20,5 @@ namespace ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore
             modelBuilder.Entity<ProductCategory>()
                 .HasKey(x => new { x.CategoryId, x.ProductId });
         }
-
-      
     }
 }

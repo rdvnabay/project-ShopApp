@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ShopAppDemo.WebUI.Migrations.ShopApp
+namespace ShopAppDemo.DataAccessLayer.Migrations
 {
-    public partial class InitialCreate_ShopAppContext : Migration
+    public partial class initialProject : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

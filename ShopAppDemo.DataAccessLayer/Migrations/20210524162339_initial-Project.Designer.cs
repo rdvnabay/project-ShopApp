@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore;
 
-namespace ShopAppDemo.WebUI.Migrations.ShopApp
+namespace ShopAppDemo.DataAccessLayer.Migrations
 {
     [DbContext(typeof(ShopAppContext))]
-    partial class ShopAppContextModelSnapshot : ModelSnapshot
+    [Migration("20210524162339_initial-Project")]
+    partial class initialProject
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
