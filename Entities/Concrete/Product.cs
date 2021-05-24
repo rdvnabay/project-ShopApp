@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Core.Entities;
+using System.Collections.Generic;
 
 namespace ShopAppDemo.Entities.Concrete
 {
-    public class Product
+    public class Product:IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

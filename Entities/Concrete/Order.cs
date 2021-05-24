@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Core.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace ShopAppDemo.Entities.Concrete
 {
-    public class Order
+    public class Order:IEntity
     {
         public Order()
         {

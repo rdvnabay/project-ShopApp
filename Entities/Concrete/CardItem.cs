@@ -1,6 +1,8 @@
-﻿namespace ShopAppDemo.Entities.Concrete
+﻿using Core.Entities;
+
+namespace ShopAppDemo.Entities.Concrete
 {
-    public class CardItem
+    public class CardItem:IEntity
     {
         public int Id { get; set; }
         public int Quantity { get; set; }
