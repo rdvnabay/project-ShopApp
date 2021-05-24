@@ -1,11 +1,9 @@
-﻿using ShopAppDemo.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ShopAppDemo.Core.DataAccessLayer;
+using ShopAppDemo.Entities;
 
 namespace ShopAppDemo.DataAccessLayer.Abstract
 {
-    public interface IUserDal:IRepository<User>
+    public interface IUserDal:IEntityRepository<User>
     {
     }
 }

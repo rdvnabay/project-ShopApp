@@ -1,16 +1,10 @@
-﻿using ShopAppDemo.DataAccessLayer.Abstract;
+﻿using ShopAppDemo.Core.DataAccessLayer.EntityFramework;
+using ShopAppDemo.DataAccessLayer.Abstract;
 using ShopAppDemo.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore
 {
-    public class EFCoreUserDal:BaseRepository<User>, IUserDal
+    public class EFCoreUserDal:EfEntityRepositoryBase<User,ShopAppContext>, IUserDal
     {
-        public EFCoreUserDal(ShopAppContext context):base(context)
-        {
-
-        }
     }
 }
