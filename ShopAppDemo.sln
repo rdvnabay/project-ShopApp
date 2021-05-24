@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "ShopAppDemo.Entities\Entities.csproj", "{FD832E25-6ABE-4820-8492-0A3C37994F6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{FD832E25-6ABE-4820-8492-0A3C37994F6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "ShopAppDemo.DataAccessLayer\DataAccess.csproj", "{CE9A5C54-4637-4F7D-AE63-BA5407DC02C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{CE9A5C54-4637-4F7D-AE63-BA5407DC02C6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "ShopAppDemo.BusinessLayer\Business.csproj", "{E5E75EB8-1F95-40A9-8B77-B01D8F5AA35C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{E5E75EB8-1F95-40A9-8B77-B01D8F5AA35C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "ShopAppDemo.WebUI\WebUI.csproj", "{93B02ADA-CA6F-4074-BC94-A69C3949798D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "WebUI\WebUI.csproj", "{93B02ADA-CA6F-4074-BC94-A69C3949798D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "ShopAppDemo.Core\Core.csproj", "{88970E79-9138-463C-9944-250A8F7959E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{88970E79-9138-463C-9944-250A8F7959E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
