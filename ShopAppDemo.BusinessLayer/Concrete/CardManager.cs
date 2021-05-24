@@ -4,7 +4,6 @@ using ShopAppDemo.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace ShopAppDemo.BusinessLayer.Concrete
 {
@@ -50,7 +49,7 @@ namespace ShopAppDemo.BusinessLayer.Concrete
         #region Method=> InitializeCard
         public void InitializeCard(string userId)
         {
-            _cardDal.Create(new Card()
+            _cardDal.Add(new Card()
             {
                 UserId = userId
             });
@@ -107,9 +106,6 @@ namespace ShopAppDemo.BusinessLayer.Concrete
         public Card GetOneFilter(Expression<Func<Card, bool>> filter = null)
         {
             throw new NotImplementedException();
-        }
-
-
-       
+        }  
     }
 }
