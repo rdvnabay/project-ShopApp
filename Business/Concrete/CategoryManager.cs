@@ -1,9 +1,7 @@
-﻿using ShopAppDemo.BusinessLayer.Abstract;
+﻿using Core.Utilities.Results;
+using ShopAppDemo.BusinessLayer.Abstract;
 using ShopAppDemo.DataAccessLayer.Abstract;
 using ShopAppDemo.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace ShopAppDemo.BusinessLayer.Concrete
 {
@@ -15,50 +13,16 @@ namespace ShopAppDemo.BusinessLayer.Concrete
             _categoryDal = categoryDal;
         }
 
-        public bool Create(Category entity)
+        public IDataResult<Category> GetByIdWithProducts(int id)
         {
-            _categoryDal.Add(entity);
-            return true;
+            var data= _categoryDal.GetByIdWithProducts(id);
+            return new SuccessDataResult<Category>(data);
         }
 
-        public void Delete(Category entity)
-        {
-            _categoryDal.Delete(entity);
-        }
-
-        public IEnumerable<Category> GetAll()
-        {
-            return _categoryDal.GetAll();
-        }
-
-        public IEnumerable<Category> GetAllFilter(Expression<Func<Category, bool>> filter = null)
-        {
-            return _categoryDal.GetAll(filter);
-        }
-
-        public Category GetById(int id)
-        {
-            return _categoryDal.Get(x =>x.Id==id);
-        }
-
-        public Category GetByIdWithProducts(int id)
-        {
-            return _categoryDal.GetByIdWithProducts(id);
-        }
-
-        public Category GetOneFilter(Expression<Func<Category, bool>> filter = null)
-        {
-            return _categoryDal.Get(filter);
-        }
-
-        public void RemoveFromCategoryProduct(int productId, int categoryId)
+        public IResult RemoveFromCategoryProduct(int productId, int categoryId)
         {
             _categoryDal.RemoveFromCategoryProduct(productId, categoryId);
-        }
-
-        public void Update(Category entity)
-        {
-            _categoryDal.Update(entity);
+            return new SuccessResult();
         }
     }
 }

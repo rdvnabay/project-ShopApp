@@ -1,14 +1,11 @@
-﻿using ShopAppDemo.Entities;
+﻿using Core.Utilities.Results;
 using ShopAppDemo.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ShopAppDemo.BusinessLayer.Abstract
 {
-   public interface ICategoryService:IRepositoryService<Category>
+    public interface ICategoryService
     {
-        public Category GetByIdWithProducts(int id);
-        void RemoveFromCategoryProduct(int productId, int categoryId);
+        IDataResult<Category> GetByIdWithProducts(int id);
+        IResult RemoveFromCategoryProduct(int productId, int categoryId);
     }
 }
