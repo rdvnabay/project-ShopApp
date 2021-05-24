@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShopAppDemo.Core.DataAccessLayer.EntityFramework;
+using ShopAppDemo.Core.DataAccess.EntityFramework;
 using ShopAppDemo.DataAccessLayer.Abstract;
-using ShopAppDemo.Entities;
-using System;
-using System.Collections.Generic;
+using ShopAppDemo.Entities.Concrete;
 using System.Linq;
-using System.Text;
 
 namespace ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore
 {

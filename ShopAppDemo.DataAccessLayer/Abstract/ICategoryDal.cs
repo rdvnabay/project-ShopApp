@@ -1,8 +1,5 @@
-﻿using ShopAppDemo.Core.DataAccessLayer;
-using ShopAppDemo.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ShopAppDemo.Core.DataAccess;
+using ShopAppDemo.Entities.Concrete;
 
 namespace ShopAppDemo.DataAccessLayer.Abstract
 {

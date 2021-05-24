@@ -1,17 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShopAppDemo.Core.DataAccessLayer.EntityFramework;
+using ShopAppDemo.Core.DataAccess.EntityFramework;
 using ShopAppDemo.DataAccessLayer.Abstract;
-using ShopAppDemo.Entities;
-using System;
+using ShopAppDemo.Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore
 {
     public class EFCoreProductDal : EfEntityRepositoryBase<Product, ShopAppContext>, IProductDal
     {
-
         public Product GetByIdWithCategories(int id)
         {
             using (var context = new ShopAppContext())

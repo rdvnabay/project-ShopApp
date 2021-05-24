@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShopAppDemo.Entities;
+using ShopAppDemo.Entities.Concrete;
 
 namespace ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore
 {

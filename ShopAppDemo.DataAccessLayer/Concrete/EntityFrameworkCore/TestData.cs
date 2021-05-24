@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ShopAppDemo.Entities;
-using System;
-using System.Collections.Generic;
+using ShopAppDemo.Entities.Concrete;
 using System.Linq;
-using System.Text;
 
 namespace ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore
 {
@@ -54,7 +51,6 @@ namespace ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore
 
                 context.AddRange(productsCategories);
                 context.SaveChanges();
-
             }
         }
     }

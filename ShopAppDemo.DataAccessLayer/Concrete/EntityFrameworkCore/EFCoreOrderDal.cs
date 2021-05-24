@@ -1,6 +1,6 @@
-﻿using ShopAppDemo.Core.DataAccessLayer.EntityFramework;
+﻿using ShopAppDemo.Core.DataAccess.EntityFramework;
 using ShopAppDemo.DataAccessLayer.Abstract;
-using ShopAppDemo.Entities;
+using ShopAppDemo.Entities.Concrete;
 
 namespace ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore
 {
