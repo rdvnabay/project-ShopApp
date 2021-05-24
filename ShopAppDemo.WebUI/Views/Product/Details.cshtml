@@ -1,8 +1,4 @@
 ﻿@model ProductDetailsViewModel
-@{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 <partial name="_breadCrumb">
 <div class="row">
@@ -18,10 +14,7 @@
                 <h3 class="card-text">
                     @foreach (var category in Model.Categories)
                     {
-            
                         @category.Name
-                   
-                   
                     }
                 </h3>
                 <p class="card-text">@Model.Product.Price TL</p>
@@ -40,8 +33,6 @@
                     </form>
                 </div>
                 <p class="card-text">@Html.Raw(Model.Product.Description)</p>
-
-               
             </div>
         </div>
     </div>

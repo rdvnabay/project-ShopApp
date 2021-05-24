@@ -1,60 +1,56 @@
 ﻿@model ProductModel
-@{
-    ViewData["Title"] = "AddProduct";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-    <partial name="_breadCrumb">
-        <h2 class="text-left text-muted mb-2">Add Product</h2>
-        <div class="row">
-            <div class="col-sm-8 offset-1">
-                <form asp-action="Add" method="post" enctype="multipart/form-data">
-                    <div class="form-group row">
-                        <label class="col-sm-1 col-form-label" asp-for="Name"></label>
-                        <input class="form-control col-sm-6 " asp-for="Name" />
-                        @if (ViewBag.ErrorMessages != null)
-                        {
-                            <div class="text-muted ">
-                                @ViewBag.ErrorMessages
-                            </div>
-                        }
 
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-1 col-form-label" asp-for="Price"></label>
-                        <input class="form-control col-sm-6 " asp-for="Price" />
-                        <span asp-validation-for="Price" class="text-muted "></span>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-1 col-form-label">Image</label>
-                        <input type="file" name="file" id="file" class="form-control col-sm-6 " />
-                        <span asp-validation-for="Image" class="text-muted "></span>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-1 col-form-label" asp-for="Description"></label>
-                        <textarea id="editor" class="form-control col-sm-5 offset-1 " asp-for="Description"></textarea>
-                        <span asp-validation-for="Description" class="text-muted "></span>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-6 ml-auto">
-                            <input type="submit" value="Add" class="btn btn-sm btn-info" />
+<partial name="_breadCrumb">
+    <h2 class="text-left text-muted mb-2">Add Product</h2>
+    <div class="row">
+        <div class="col-sm-8 offset-1">
+            <form asp-action="Add" method="post" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label class="col-sm-1 col-form-label" asp-for="Name"></label>
+                    <input class="form-control col-sm-6 " asp-for="Name" />
+                    @if (ViewBag.ErrorMessages != null)
+                    {
+                        <div class="text-muted ">
+                            @ViewBag.ErrorMessages
                         </div>
+                    }
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-1 col-form-label" asp-for="Price"></label>
+                    <input class="form-control col-sm-6 " asp-for="Price" />
+                    <span asp-validation-for="Price" class="text-muted "></span>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-1 col-form-label">Image</label>
+                    <input type="file" name="file" id="file" class="form-control col-sm-6 " />
+                    <span asp-validation-for="Image" class="text-muted "></span>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-1 col-form-label" asp-for="Description"></label>
+                    <textarea id="editor" class="form-control col-sm-5 offset-1 " asp-for="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-muted "></span>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-6 ml-auto">
+                        <input type="submit" value="Add" class="btn btn-sm btn-info" />
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
+    </div>
 
 
-        @section jqueryValidations{
-            <script src="/modules/jquery-validation/dist/jquery.validate.min.js"></script>
-            <script src="/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    @section jqueryValidations{
+        <script src="/modules/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 
-            <script src="/modules/ckeditor/ckeditor.js"></script>
-            <script>
-                CKEDITOR.replace("editor");
-            </script>
-        }
+        <script src="/modules/ckeditor/ckeditor.js"></script>
+        <script>
+            CKEDITOR.replace("editor");
+        </script>
+    }
 
