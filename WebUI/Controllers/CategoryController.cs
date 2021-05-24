@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShopAppDemo.BusinessLayer.Abstract;
-using ShopAppDemo.Entities;
 using ShopAppDemo.Entities.Concrete;
 using ShopAppDemo.WebUI.Models;
 using System.Linq;
@@ -24,7 +23,7 @@ namespace ShopAppDemo.WebUI.Controllers
         public IActionResult List()
         {
             return View(new CategoryListModel() { 
-            Categories= _categoryService.GetAll().ToList()
+            //Categories= _categoryService.GetAll().Data
             });
         }
 
@@ -47,7 +46,7 @@ namespace ShopAppDemo.WebUI.Controllers
                         Id = model.Id,
                         Name = model.Name
                     };
-                    _categoryService.Create(entity);
+                    _categoryService.Add(entity);
                     return RedirectToAction("List");
                 }
             }
@@ -57,7 +56,7 @@ namespace ShopAppDemo.WebUI.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Edit(int? id)
         {
-            var entity = _categoryService.GetByIdWithProducts((int)id);
+            var entity = _categoryService.GetByIdWithProducts((int)id).Data;
             if (id!=null)
             {
                 return View(new CategoryModel()
@@ -75,7 +74,7 @@ namespace ShopAppDemo.WebUI.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Edit(Category model)
         {
-            var entity = _categoryService.GetById(model.Id);
+            var entity = _categoryService.GetById(model.Id).Data;
             if (ModelState.IsValid)
             {
                 if (model!=null)
@@ -97,7 +96,7 @@ namespace ShopAppDemo.WebUI.Controllers
             {
                 return NotFound();
             }
-            var entity = _categoryService.GetById((int)id);
+            var entity = _categoryService.GetById((int)id).Data;
             _categoryService.Delete(entity);
             return RedirectToAction("List");
         }

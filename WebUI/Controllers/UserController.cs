@@ -20,7 +20,7 @@ namespace ShopAppDemo.WebUI.Controllers
 
         public IActionResult MyOrders()
         {
-            var orders = _orderService.GetAllFilter(x => x.UserId == _userManager.GetUserId(User));
+            var orders = _orderService.GetAllFilter(x => x.UserId == _userManager.GetUserId(User)).Data;
             var orderListModel = new List<OrderListModel>();
             OrderListModel orderModel;
 

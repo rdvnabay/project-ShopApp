@@ -35,7 +35,7 @@ namespace ShopAppDemo.WebUI.Controllers
         //Actions
         public IActionResult Checkout()
         {
-            var cart = _cardService.GetCardByUserId(_userManager.GetUserId(User));
+            var cart = _cardService.GetCardByUserId(_userManager.GetUserId(User)).Data;
 
             var orderModel = new OrderModel();
 
@@ -62,7 +62,7 @@ namespace ShopAppDemo.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var userId = _userManager.GetUserId(User);
-                var cart = _cardService.GetCardByUserId(userId);
+                var cart = _cardService.GetCardByUserId(userId).Data;
 
                 model.CardModel = new CardModel()
                 {

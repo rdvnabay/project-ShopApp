@@ -128,8 +128,8 @@ namespace ShopAppDemo.WebUI.Controllers
                 Price = entity.Price,
                 Image = entity.Image,
                 Description = entity.Description,
-                SelectedCategories = entity.ProductCategories.Select(x => x.Category).ToList(),
-                Categories = _categoryService.GetAll().ToList()
+                SelectedCategories = entity.ProductCategories.Select(x => x.Category).ToList()
+                //Categories = _categoryService.GetAll().Data.ToList()
             };
             return View(model);
         }

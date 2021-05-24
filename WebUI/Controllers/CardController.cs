@@ -21,7 +21,7 @@ namespace ShopAppDemo.WebUI.Controllers
 
         public IActionResult Index()
         {
-            var card = _cardService.GetCardByUserId(_userManager.GetUserId(User));
+            var card = _cardService.GetCardByUserId(_userManager.GetUserId(User)).Data;
             return View(new CardModel()
             {
                 Id = card.Id,
