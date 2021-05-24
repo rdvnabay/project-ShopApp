@@ -1,4 +1,4 @@
-﻿namespace ShopAppDemo.Entities
+﻿namespace ShopAppDemo.Entities.Concrete
 {
     public class CardItem
     {

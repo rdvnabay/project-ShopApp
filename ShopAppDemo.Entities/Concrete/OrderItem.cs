@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ShopAppDemo.Entities
+﻿namespace ShopAppDemo.Entities.Concrete
 {
-   public class OrderItem
+    public class OrderItem
     {
         public int Id { get; set; }
         public int OrderId { get; set; }
