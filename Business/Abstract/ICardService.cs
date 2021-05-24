@@ -1,14 +1,13 @@
-﻿using ShopAppDemo.Entities;
+﻿using Core.Utilities.Results;
 using ShopAppDemo.Entities.Concrete;
 
 namespace ShopAppDemo.BusinessLayer.Abstract
 {
     public interface ICardService
     {
-        void InitializeCard(string userId);
-        Card GetCardByUserId(string userId);
-
-        void AddToCard(string userId, int productId, int quantity);
-        void RemoveFromCard(string userId, int productId);
+        IResult AddToCard(string userId, int productId, int quantity);
+        IDataResult<Card> GetCardByUserId(string userId);
+        IResult InitializeCard(string userId);  
+        IResult RemoveFromCard(string userId, int productId);
     }
 }

@@ -1,27 +1,20 @@
-﻿using ShopAppDemo.BusinessLayer.Abstract;
+﻿using Core.Utilities.Results;
+using ShopAppDemo.BusinessLayer.Abstract;
 using ShopAppDemo.DataAccessLayer.Abstract;
 using ShopAppDemo.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace ShopAppDemo.BusinessLayer.Concrete
 {
     public class CardManager : ICardService
     {
-        #region Variable
         private ICardDal _cardDal;
-        #endregion
 
-        #region Constructor
         public CardManager(ICardDal cardDal)
         {
             _cardDal = cardDal;
         }
-        #endregion
 
-        #region Method=> AddToCard
-        public void AddToCard(string userId, int productId, int quantity)
+        public IResult AddToCard(string userId, int productId, int quantity)
         {
            var card =_cardDal.GetCardByUserId(userId);
             if (card!=null)
@@ -34,7 +27,6 @@ namespace ShopAppDemo.BusinessLayer.Concrete
                         ProductId = productId,
                         Quantity = quantity,
                         CardId = card.Id,
-
                     });
                 }
                 else
@@ -43,69 +35,29 @@ namespace ShopAppDemo.BusinessLayer.Concrete
                 }
                 _cardDal.Update(card);
             }
+            return new SuccessResult();
         }
-        #endregion
-
-        #region Method=> InitializeCard
-        public void InitializeCard(string userId)
+        public IDataResult<Card> GetCardByUserId(string userId)
+        {
+            var data= _cardDal.GetCardByUserId(userId);
+            return new SuccessDataResult<Card>(data);
+        }
+        public IResult InitializeCard(string userId)
         {
             _cardDal.Add(new Card()
             {
                 UserId = userId
             });
-
+            return new SuccessResult();
         }
-        #endregion
-
-        #region Method=> RemoveFromCard
-        public void RemoveFromCard(string userId, int productId)
+        public IResult RemoveFromCard(string userId, int productId)
         {
             var card = _cardDal.GetCardByUserId(userId);
             if (card!=null)
             {
                 _cardDal.RemoveFromCard(card.Id, productId);
             }
+            return new SuccessResult();
         }
-        #endregion
-
-        #region Methods=>CRUD
-        public IEnumerable<Card> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-        public bool Create(Card entity)
-        {
-            throw new NotImplementedException();
-        }
-        public void Update(Card entity)
-        {
-            throw new NotImplementedException();
-        }
-        public void Delete(Card entity)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
-
-
-        public IEnumerable<Card> GetAllFilter(Expression<Func<Card, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Card GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Card GetCardByUserId(string userId)
-        {
-            return _cardDal.GetCardByUserId(userId);
-        }
-
-        public Card GetOneFilter(Expression<Func<Card, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }  
     }
 }
