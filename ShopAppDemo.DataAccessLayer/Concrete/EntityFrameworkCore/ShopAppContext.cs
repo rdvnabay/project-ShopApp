@@ -7,7 +7,7 @@ namespace ShopAppDemo.DataAccessLayer.Concrete.EntityFrameworkCore
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ShopAppDB;Trusted_Connection=True;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=ShopAppDB;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
 
         public DbSet<Product> Products { get; set; }

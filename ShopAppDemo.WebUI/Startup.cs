@@ -103,7 +103,7 @@ namespace ShopAppDemo.WebUI
 
             }
             app.UseStaticFiles();
-            app.CustomStaticFiles();
+            //app.CustomStaticFiles();
           
             app.UseAuthentication();
             app.UseRouting();
